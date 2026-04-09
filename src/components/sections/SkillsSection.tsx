@@ -91,11 +91,18 @@ const colorMap = {
   tertiary: "var(--tertiary)",
 };
 
+type AnyCategory = {
+  label: string;
+  color: "primary" | "secondary" | "tertiary";
+  icon: string;
+  items: { name: string; level: number }[];
+};
+
 function CategoryCard({
   category,
   delay,
 }: {
-  category: typeof skills.frontend;
+  category: AnyCategory;
   delay: number;
 }) {
   const accentColor = colorMap[category.color];
