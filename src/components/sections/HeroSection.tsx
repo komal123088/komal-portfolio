@@ -422,7 +422,6 @@ export function HeroSection() {
             {[
               { label: "GH", url: personal.social.github },
               { label: "IN", url: personal.social.linkedin },
-              { label: "TW", url: personal.social.twitter },
             ].map((s) => (
               <a
                 key={s.label}

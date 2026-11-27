@@ -219,4 +219,4 @@ export const matrix: ThemeConfig = {
 // ★  CHANGE THIS LINE TO SWITCH ENTIRE THEME  ★
 // Options: cyberpunk | neonGold | aurora | matrix
 // ═══════════════════════════════════════════════
-export const activeTheme: ThemeConfig = neonGold;
+export const activeTheme: ThemeConfig = cyberpunk;
