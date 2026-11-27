@@ -23,6 +23,7 @@ function ProjectCard({
 
   return (
     <div
+      className="proj-card"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -85,6 +86,7 @@ function ProjectCard({
 
       {/* Title */}
       <h3
+        className="proj-card-title"
         style={{
           fontFamily: "var(--font-display)",
           fontSize: "17px",
@@ -99,6 +101,7 @@ function ProjectCard({
 
       {/* Description */}
       <p
+        className="proj-card-desc"
         style={{
           fontSize: "14px",
           color: "var(--text-muted)",
@@ -137,7 +140,10 @@ function ProjectCard({
       </div>
 
       {/* Links */}
-      <div style={{ display: "flex", gap: "16px" }}>
+      <div
+        className="proj-links"
+        style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}
+      >
         <a
           href={project.liveUrl}
           target="_blank"
@@ -190,6 +196,7 @@ function FeaturedProject({ project }: { project: (typeof projects)[0] }) {
 
   return (
     <div
+      className="proj-featured"
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
@@ -233,6 +240,7 @@ function FeaturedProject({ project }: { project: (typeof projects)[0] }) {
       ))}
 
       <div
+        className="proj-featured-inner"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -266,6 +274,7 @@ function FeaturedProject({ project }: { project: (typeof projects)[0] }) {
           </div>
 
           <h3
+            className="proj-featured-title"
             style={{
               fontFamily: "var(--font-display)",
               fontSize: "22px",
@@ -278,6 +287,7 @@ function FeaturedProject({ project }: { project: (typeof projects)[0] }) {
           </h3>
 
           <p
+            className="proj-featured-desc"
             style={{
               fontSize: "15px",
               color: "var(--text-muted)",
@@ -314,7 +324,10 @@ function FeaturedProject({ project }: { project: (typeof projects)[0] }) {
             ))}
           </div>
 
-          <div style={{ display: "flex", gap: "16px" }}>
+          <div
+            className="proj-links"
+            style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}
+          >
             <a
               href={project.liveUrl}
               target="_blank"
@@ -412,6 +425,7 @@ export function ProjectsSection() {
   return (
     <section
       id="projects"
+      className="proj-section"
       style={{
         padding: "100px 40px",
         maxWidth: "1180px",
@@ -420,8 +434,81 @@ export function ProjectsSection() {
         zIndex: 2,
       }}
     >
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        .proj-grid > * { min-width: 0; }
+        .proj-featured-inner > * { min-width: 0; }
+
+        /* Laptop / small desktop */
+        @media (max-width: 1100px) {
+          .proj-section { padding: 90px 32px !important; }
+          .proj-featured { padding: 30px !important; }
+          .proj-featured-inner { gap: 28px !important; }
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+          .proj-section { padding: 80px 24px !important; }
+          .proj-header { margin-bottom: 40px !important; }
+          .proj-title-line { width: 80px !important; }
+          .proj-featured-inner {
+            grid-template-columns: 1fr !important;
+            gap: 28px !important;
+          }
+          .proj-card { padding: 24px !important; }
+        }
+
+        /* Mobile: 1 column */
+        @media (max-width: 700px) {
+          .proj-grid {
+            grid-template-columns: 1fr !important;
+            gap: 18px !important;
+          }
+          /* span 2 se extra column ban kar overflow hota tha */
+          .proj-featured { grid-column: span 1 !important; }
+        }
+
+        @media (max-width: 600px) {
+          .proj-section { padding: 64px 16px !important; }
+          .proj-header {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            margin-bottom: 32px !important;
+            gap: 20px !important;
+          }
+          .proj-label { font-size: 10px !important; letter-spacing: 3px !important; }
+
+          .proj-filters {
+            width: 100% !important;
+            flex-wrap: wrap !important;
+          }
+          .proj-filter-btn {
+            flex: 1 1 auto !important;
+            padding: 9px 12px !important;
+            font-size: 10px !important;
+            letter-spacing: 1.5px !important;
+          }
+
+          .proj-featured { padding: 24px 18px !important; }
+          .proj-featured-title { font-size: 19px !important; }
+          .proj-featured-desc { font-size: 14px !important; line-height: 1.65 !important; }
+          .proj-card { padding: 22px 18px !important; }
+          .proj-card-title { font-size: 16px !important; }
+          .proj-card-desc { font-size: 13.5px !important; }
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+          .proj-section { padding: 56px 12px !important; }
+          .proj-featured { padding: 20px 14px !important; }
+          .proj-card { padding: 20px 14px !important; }
+          .proj-filter-btn { padding: 8px 8px !important; letter-spacing: 1px !important; }
+        }
+      `}</style>
+
       {/* Header */}
       <div
+        className="proj-header"
         style={{
           display: "flex",
           justifyContent: "space-between",
@@ -433,6 +520,7 @@ export function ProjectsSection() {
       >
         <div>
           <div
+            className="proj-label"
             style={{
               fontFamily: "var(--font-mono)",
               fontSize: "11px",
@@ -454,6 +542,7 @@ export function ProjectsSection() {
           >
             Projects
             <div
+              className="proj-title-line"
               style={{
                 height: "2px",
                 width: "55%",
@@ -466,10 +555,11 @@ export function ProjectsSection() {
         </div>
 
         {/* Filter tabs */}
-        <div style={{ display: "flex", gap: "8px" }}>
+        <div className="proj-filters" style={{ display: "flex", gap: "8px" }}>
           {(["All", "Full Stack", "Frontend"] as FilterType[]).map((f) => (
             <button
               key={f}
+              className="proj-filter-btn"
               onClick={() => setFilter(f)}
               style={{
                 fontFamily: "var(--font-mono)",
@@ -493,6 +583,7 @@ export function ProjectsSection() {
 
       {/* Projects grid */}
       <div
+        className="proj-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(2, 1fr)",

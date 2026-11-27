@@ -6,6 +6,7 @@ export function Footer() {
 
   return (
     <footer
+      className="footer-root"
       style={{
         borderTop: "1px solid var(--border)",
         padding: "28px 40px",
@@ -18,6 +19,40 @@ export function Footer() {
         zIndex: 2,
       }}
     >
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        /* Tablet */
+        @media (max-width: 900px) {
+          .footer-root { padding: 26px 24px !important; }
+        }
+
+        /* Mobile: teeno cheezein center mein upar neeche */
+        @media (max-width: 600px) {
+          .footer-root {
+            flex-direction: column !important;
+            justify-content: center !important;
+            text-align: center !important;
+            padding: 28px 16px !important;
+            gap: 18px !important;
+          }
+          .footer-credit {
+            font-size: 10px !important;
+            letter-spacing: 1.5px !important;
+            line-height: 1.7 !important;
+          }
+          .footer-social { justify-content: center !important; }
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+          .footer-root { padding: 24px 12px !important; }
+          .footer-credit {
+            font-size: 9px !important;
+            letter-spacing: 1px !important;
+          }
+        }
+      `}</style>
+
       <div
         style={{
           fontFamily: "var(--font-display)",
@@ -32,6 +67,7 @@ export function Footer() {
       </div>
 
       <div
+        className="footer-credit"
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: "11px",
@@ -42,7 +78,7 @@ export function Footer() {
         DESIGNED & BUILT BY {personal.name.toUpperCase()} © {year}
       </div>
 
-      <div style={{ display: "flex", gap: "10px" }}>
+      <div className="footer-social" style={{ display: "flex", gap: "10px" }}>
         {[
           { label: "GH", url: personal.social.github },
           { label: "IN", url: personal.social.linkedin },

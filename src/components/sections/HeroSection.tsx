@@ -207,6 +207,7 @@ function ThreeScene() {
   return (
     <div
       ref={mountRef}
+      className="hero-three"
       style={{
         width: "100%",
         height: "500px",
@@ -242,6 +243,7 @@ export function HeroSection() {
   return (
     <section
       id="about"
+      className="hero-section"
       style={{
         minHeight: "100vh",
         display: "flex",
@@ -252,7 +254,85 @@ export function HeroSection() {
         background: activeTheme.gradients.hero,
       }}
     >
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        .hero-grid > * { min-width: 0; }
+
+        /* Laptop / small desktop */
+        @media (max-width: 1100px) {
+          .hero-section { padding: 100px 32px 60px !important; }
+          .hero-grid { gap: 40px !important; }
+          .hero-three { height: 440px !important; }
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+          .hero-section { padding: 100px 24px 90px !important; }
+          .hero-grid {
+            grid-template-columns: 1fr !important;
+            gap: 56px !important;
+          }
+          .hero-left { text-align: center; }
+          .hero-tag { justify-content: center !important; }
+          .hero-bio { margin-left: auto !important; margin-right: auto !important; }
+          .hero-buttons { justify-content: center !important; }
+          .hero-social { justify-content: center !important; }
+          .hero-scene-wrap {
+            width: 100% !important;
+            max-width: 520px !important;
+          }
+          .hero-three {
+            height: 400px !important;
+            margin: 0 auto !important;
+          }
+          .hero-badge-status { left: 0 !important; }
+          .hero-badge-exp { right: 0 !important; }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+          .hero-section { padding: 90px 16px 80px !important; }
+          .hero-grid { gap: 44px !important; }
+          .hero-typewriter {
+            font-size: 15px !important;
+            min-height: 24px !important;
+          }
+          .hero-bio {
+            font-size: 15px !important;
+            line-height: 1.7 !important;
+            margin-bottom: 28px !important;
+          }
+          .hero-buttons { gap: 12px !important; }
+          .hero-btn {
+            padding: 12px 22px !important;
+            font-size: 11px !important;
+            letter-spacing: 1.5px !important;
+          }
+          .hero-three { height: 320px !important; }
+          .hero-badge-status {
+            bottom: 12px !important;
+            padding: 8px 12px !important;
+          }
+          .hero-badge-exp {
+            top: 12px !important;
+            padding: 8px 12px !important;
+          }
+          .hero-scroll { display: none !important; }
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+          .hero-section { padding: 85px 14px 70px !important; }
+          .hero-btn {
+            padding: 11px 16px !important;
+            font-size: 10px !important;
+          }
+          .hero-three { height: 280px !important; }
+        }
+      `}</style>
+
       <div
+        className="hero-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1fr",
@@ -264,9 +344,13 @@ export function HeroSection() {
         }}
       >
         {/* LEFT — TEXT */}
-        <div style={{ animation: "fadeInLeft 0.7s 0.1s both" }}>
+        <div
+          className="hero-left"
+          style={{ animation: "fadeInLeft 0.7s 0.1s both" }}
+        >
           {/* Tag */}
           <div
+            className="hero-tag"
             style={{
               fontFamily: "var(--font-mono)",
               fontSize: "12px",
@@ -319,6 +403,7 @@ export function HeroSection() {
 
           {/* TYPEWRITER */}
           <div
+            className="hero-typewriter"
             style={{
               fontFamily: "var(--font-mono)",
               fontSize: "18px",
@@ -340,6 +425,7 @@ export function HeroSection() {
 
           {/* BIO */}
           <p
+            className="hero-bio"
             style={{
               fontSize: "16px",
               color: "var(--text-muted)",
@@ -352,9 +438,13 @@ export function HeroSection() {
           </p>
 
           {/* BUTTONS */}
-          <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
+          <div
+            className="hero-buttons"
+            style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}
+          >
             <a
               href="#projects"
+              className="hero-btn"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "12px",
@@ -387,6 +477,7 @@ export function HeroSection() {
             <a
               href={personal.resumeUrl}
               download
+              className="hero-btn"
               style={{
                 fontFamily: "var(--font-mono)",
                 fontSize: "12px",
@@ -418,7 +509,10 @@ export function HeroSection() {
           </div>
 
           {/* SOCIAL LINKS */}
-          <div style={{ display: "flex", gap: "12px", marginTop: "32px" }}>
+          <div
+            className="hero-social"
+            style={{ display: "flex", gap: "12px", marginTop: "32px" }}
+          >
             {[
               { label: "GH", url: personal.social.github },
               { label: "IN", url: personal.social.linkedin },
@@ -462,6 +556,7 @@ export function HeroSection() {
 
         {/* RIGHT — 3D SCENE */}
         <div
+          className="hero-right"
           style={{
             display: "flex",
             justifyContent: "center",
@@ -470,7 +565,7 @@ export function HeroSection() {
             position: "relative",
           }}
         >
-          <div style={{ position: "relative" }}>
+          <div className="hero-scene-wrap" style={{ position: "relative" }}>
             <CornerDeco pos="tl" />
             <CornerDeco pos="tr" />
             <CornerDeco pos="bl" />
@@ -479,6 +574,7 @@ export function HeroSection() {
 
             {/* Floating badge */}
             <div
+              className="hero-badge-status"
               style={{
                 position: "absolute",
                 bottom: "30px",
@@ -524,6 +620,7 @@ export function HeroSection() {
 
             {/* Floating badge 2 */}
             <div
+              className="hero-badge-exp"
               style={{
                 position: "absolute",
                 top: "40px",
@@ -562,6 +659,7 @@ export function HeroSection() {
 
       {/* Scroll indicator */}
       <div
+        className="hero-scroll"
         style={{
           position: "absolute",
           bottom: "30px",

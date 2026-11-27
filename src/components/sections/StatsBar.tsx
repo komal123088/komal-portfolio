@@ -47,6 +47,7 @@ function StatItem({ stat }: { stat: { number: string; label: string } }) {
   return (
     <div
       ref={ref}
+      className="stat-item"
       style={{
         background: "var(--bg)",
         padding: "28px 24px",
@@ -55,6 +56,7 @@ function StatItem({ stat }: { stat: { number: string; label: string } }) {
       }}
     >
       <div
+        className="stat-number"
         style={{
           fontFamily: "var(--font-display)",
           fontSize: "32px",
@@ -67,6 +69,7 @@ function StatItem({ stat }: { stat: { number: string; label: string } }) {
         {display}
       </div>
       <div
+        className="stat-label"
         style={{
           fontFamily: "var(--font-mono)",
           fontSize: "10px",
@@ -85,6 +88,7 @@ function StatItem({ stat }: { stat: { number: string; label: string } }) {
 export function StatsBar() {
   return (
     <div
+      className="stats-bar"
       style={{
         display: "grid",
         gridTemplateColumns: `repeat(${personal.stats.length}, 1fr)`,
@@ -96,6 +100,39 @@ export function StatsBar() {
         zIndex: 2,
       }}
     >
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        .stats-bar > * { min-width: 0; }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+          .stats-bar { margin: 0 24px !important; }
+          .stat-item { padding: 24px 16px !important; }
+          .stat-number { font-size: 28px !important; }
+        }
+
+        /* Mobile: 2 columns ka grid */
+        @media (max-width: 600px) {
+          .stats-bar {
+            grid-template-columns: repeat(2, 1fr) !important;
+            margin: 0 16px !important;
+          }
+          .stat-item { padding: 22px 12px !important; }
+          .stat-number { font-size: 26px !important; }
+          .stat-label {
+            font-size: 9px !important;
+            letter-spacing: 1.5px !important;
+          }
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+          .stats-bar { margin: 0 12px !important; }
+          .stat-item { padding: 18px 8px !important; }
+          .stat-number { font-size: 22px !important; }
+        }
+      `}</style>
+
       {personal.stats.map((stat) => (
         <StatItem key={stat.label} stat={stat} />
       ))}

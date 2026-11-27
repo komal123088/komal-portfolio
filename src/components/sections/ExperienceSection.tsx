@@ -6,6 +6,7 @@ export function ExperienceSection() {
   return (
     <section
       id="experience"
+      className="exp-section"
       style={{
         padding: "100px 40px",
         maxWidth: "1180px",
@@ -14,8 +15,62 @@ export function ExperienceSection() {
         zIndex: 2,
       }}
     >
-      <div style={{ marginBottom: "60px" }}>
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        .exp-item > * { min-width: 0; }
+
+        /* Laptop / small desktop */
+        @media (max-width: 1100px) {
+          .exp-section { padding: 90px 32px !important; }
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+          .exp-section { padding: 80px 24px !important; }
+          .exp-header { margin-bottom: 48px !important; }
+          .exp-title-line { width: 80px !important; }
+          .exp-timeline { max-width: 100% !important; }
+          .exp-item { gap: 24px !important; margin-bottom: 40px !important; }
+          .exp-card { padding: 22px 22px !important; }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+          .exp-section { padding: 64px 16px !important; }
+          .exp-header { margin-bottom: 36px !important; }
+          .exp-label { font-size: 10px !important; letter-spacing: 3px !important; }
+
+          /* Timeline line aur dot chhote */
+          .exp-line { left: 11px !important; }
+          .exp-dot {
+            width: 24px !important;
+            height: 24px !important;
+          }
+          .exp-item { gap: 14px !important; margin-bottom: 32px !important; }
+
+          .exp-card { padding: 18px 16px !important; }
+          .exp-top { flex-direction: column !important; gap: 10px !important; }
+          .exp-role { font-size: 15px !important; }
+          .exp-period { white-space: normal !important; }
+          .exp-desc { font-size: 13.5px !important; line-height: 1.65 !important; }
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+          .exp-section { padding: 56px 12px !important; }
+          .exp-item { gap: 10px !important; }
+          .exp-card { padding: 16px 12px !important; }
+          .exp-dot {
+            width: 20px !important;
+            height: 20px !important;
+          }
+          .exp-line { left: 9px !important; }
+        }
+      `}</style>
+
+      <div className="exp-header" style={{ marginBottom: "60px" }}>
         <div
+          className="exp-label"
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "11px",
@@ -37,6 +92,7 @@ export function ExperienceSection() {
         >
           Experience
           <div
+            className="exp-title-line"
             style={{
               height: "2px",
               width: "55%",
@@ -48,9 +104,13 @@ export function ExperienceSection() {
       </div>
 
       {/* Timeline */}
-      <div style={{ position: "relative", maxWidth: "760px" }}>
+      <div
+        className="exp-timeline"
+        style={{ position: "relative", maxWidth: "760px" }}
+      >
         {/* Vertical line */}
         <div
+          className="exp-line"
           style={{
             position: "absolute",
             left: "16px",
@@ -66,6 +126,7 @@ export function ExperienceSection() {
         {experience.map((exp, i) => (
           <div
             key={i}
+            className="exp-item"
             style={{
               display: "flex",
               gap: "32px",
@@ -82,6 +143,7 @@ export function ExperienceSection() {
               }}
             >
               <div
+                className="exp-dot"
                 style={{
                   width: "33px",
                   height: "33px",
@@ -111,6 +173,7 @@ export function ExperienceSection() {
 
             {/* Content */}
             <div
+              className="exp-card"
               style={{
                 background: "var(--bg-card)",
                 border: "1px solid var(--border)",
@@ -127,6 +190,7 @@ export function ExperienceSection() {
               }
             >
               <div
+                className="exp-top"
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -138,6 +202,7 @@ export function ExperienceSection() {
               >
                 <div>
                   <h3
+                    className="exp-role"
                     style={{
                       fontFamily: "var(--font-display)",
                       fontSize: "16px",
@@ -161,6 +226,7 @@ export function ExperienceSection() {
                   </div>
                 </div>
                 <div
+                  className="exp-period"
                   style={{
                     fontFamily: "var(--font-mono)",
                     fontSize: "11px",
@@ -177,6 +243,7 @@ export function ExperienceSection() {
               </div>
 
               <p
+                className="exp-desc"
                 style={{
                   fontSize: "14px",
                   color: "var(--text-muted)",

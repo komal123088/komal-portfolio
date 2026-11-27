@@ -109,6 +109,7 @@ function CategoryCard({
 
   return (
     <div
+      className="skills-card"
       style={{
         background: "var(--bg-card)",
         border: "1px solid var(--border)",
@@ -145,6 +146,7 @@ function CategoryCard({
 
       {/* Header */}
       <div
+        className="skills-card-head"
         style={{
           display: "flex",
           alignItems: "center",
@@ -162,6 +164,7 @@ function CategoryCard({
           {category.icon}
         </span>
         <h3
+          className="skills-card-title"
           style={{
             fontFamily: "var(--font-display)",
             fontSize: "13px",
@@ -192,6 +195,7 @@ export function SkillsSection() {
   return (
     <section
       id="skills"
+      className="skills-section"
       style={{
         padding: "100px 40px",
         maxWidth: "1180px",
@@ -200,9 +204,58 @@ export function SkillsSection() {
         zIndex: 2,
       }}
     >
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        .skills-grid > * { min-width: 0; }
+
+        /* Laptop / small desktop */
+        @media (max-width: 1100px) {
+          .skills-section { padding: 90px 32px !important; }
+          .skills-deco { right: 24px !important; }
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+          .skills-section { padding: 80px 24px !important; }
+          .skills-header { margin-bottom: 48px !important; }
+          .skills-title-line { width: 80px !important; }
+          .skills-deco {
+            right: 12px !important;
+            top: 60px !important;
+            transform: scale(0.75);
+            transform-origin: top right;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+          .skills-section { padding: 64px 16px !important; }
+          .skills-header { margin-bottom: 36px !important; }
+          .skills-label { font-size: 10px !important; letter-spacing: 3px !important; }
+          .skills-grid {
+            grid-template-columns: 1fr !important;
+            gap: 16px !important;
+          }
+          .skills-card { padding: 22px 18px !important; }
+          .skills-card-head { margin-bottom: 20px !important; }
+          .skills-deco { display: none !important; }
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+          .skills-section { padding: 56px 12px !important; }
+          .skills-card { padding: 20px 14px !important; }
+          .skills-card-title {
+            font-size: 12px !important;
+            letter-spacing: 2px !important;
+          }
+        }
+      `}</style>
+
       {/* Section header */}
-      <div style={{ marginBottom: "60px" }}>
+      <div className="skills-header" style={{ marginBottom: "60px" }}>
         <div
+          className="skills-label"
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "11px",
@@ -226,6 +279,7 @@ export function SkillsSection() {
         >
           Skills & Stack
           <div
+            className="skills-title-line"
             style={{
               height: "2px",
               width: "55%",
@@ -238,6 +292,7 @@ export function SkillsSection() {
 
       {/* Animated SVG decorative element */}
       <div
+        className="skills-deco"
         style={{
           position: "absolute",
           right: "40px",
@@ -280,6 +335,7 @@ export function SkillsSection() {
 
       {/* Skills grid */}
       <div
+        className="skills-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",

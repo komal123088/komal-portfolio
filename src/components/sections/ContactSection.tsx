@@ -45,6 +45,7 @@ export function ContactSection() {
   return (
     <section
       id="contact"
+      className="contact-section"
       style={{
         padding: "100px 40px",
         maxWidth: "1180px",
@@ -53,9 +54,81 @@ export function ContactSection() {
         zIndex: 2,
       }}
     >
+      {/* RESPONSIVE STYLES */}
+      <style>{`
+        .contact-grid > * { min-width: 0; }
+        .contact-fields > * { min-width: 0; }
+        .contact-input { max-width: 100%; box-sizing: border-box; }
+
+        /* Laptop / small desktop */
+        @media (max-width: 1100px) {
+          .contact-section { padding: 90px 32px !important; }
+          .contact-grid { gap: 40px !important; }
+          .contact-form { padding: 30px !important; }
+        }
+
+        /* Tablet */
+        @media (max-width: 900px) {
+          .contact-section { padding: 80px 24px !important; }
+          .contact-header { margin-bottom: 48px !important; }
+          .contact-title-line { width: 80px !important; }
+          .contact-grid {
+            grid-template-columns: 1fr !important;
+            gap: 40px !important;
+          }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+          .contact-section { padding: 64px 16px !important; }
+          .contact-header { margin-bottom: 36px !important; }
+          .contact-label { font-size: 10px !important; letter-spacing: 3px !important; }
+          .contact-intro {
+            font-size: 15px !important;
+            line-height: 1.7 !important;
+            margin-bottom: 28px !important;
+          }
+
+          /* Name aur Email upar neeche */
+          .contact-fields {
+            grid-template-columns: 1fr !important;
+          }
+
+          .contact-form { padding: 24px 16px !important; }
+
+          /* Lambi email / link value screen se bahar na jaye */
+          .contact-item { padding: 12px !important; gap: 12px !important; }
+          .contact-item-text { min-width: 0; }
+          .contact-item-value {
+            font-size: 12px !important;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+          }
+
+          /* iOS par 16px se chhota font zoom kar deta hai */
+          .contact-input { font-size: 16px !important; }
+        }
+
+        /* Small phones */
+        @media (max-width: 380px) {
+          .contact-section { padding: 56px 12px !important; }
+          .contact-form { padding: 20px 12px !important; }
+          .contact-item-icon {
+            width: 34px !important;
+            height: 34px !important;
+          }
+        }
+
+        /* Touch devices par hover se element khisakta nahi */
+        @media (hover: none) {
+          .contact-item:hover { transform: none !important; }
+        }
+      `}</style>
+
       {/* Header */}
-      <div style={{ marginBottom: "60px" }}>
+      <div className="contact-header" style={{ marginBottom: "60px" }}>
         <div
+          className="contact-label"
           style={{
             fontFamily: "var(--font-mono)",
             fontSize: "11px",
@@ -77,6 +150,7 @@ export function ContactSection() {
         >
           Contact
           <div
+            className="contact-title-line"
             style={{
               height: "2px",
               width: "55%",
@@ -88,6 +162,7 @@ export function ContactSection() {
       </div>
 
       <div
+        className="contact-grid"
         style={{
           display: "grid",
           gridTemplateColumns: "1fr 1.4fr",
@@ -98,6 +173,7 @@ export function ContactSection() {
         {/* LEFT — Info */}
         <div style={{ animation: "fadeInLeft 0.6s 0.1s both" }}>
           <p
+            className="contact-intro"
             style={{
               fontSize: "16px",
               color: "var(--text-muted)",
@@ -118,6 +194,7 @@ export function ContactSection() {
                 href={item.href}
                 target="_blank"
                 rel="noreferrer"
+                className="contact-item"
                 style={{
                   display: "flex",
                   alignItems: "center",
@@ -140,6 +217,7 @@ export function ContactSection() {
                 }}
               >
                 <div
+                  className="contact-item-icon"
                   style={{
                     width: "38px",
                     height: "38px",
@@ -156,7 +234,7 @@ export function ContactSection() {
                 >
                   {item.icon}
                 </div>
-                <div>
+                <div className="contact-item-text">
                   <div
                     style={{
                       fontFamily: "var(--font-mono)",
@@ -169,6 +247,7 @@ export function ContactSection() {
                     {item.label}
                   </div>
                   <div
+                    className="contact-item-value"
                     style={{
                       fontFamily: "var(--font-mono)",
                       fontSize: "13px",
@@ -186,6 +265,7 @@ export function ContactSection() {
 
         {/* RIGHT — Form */}
         <div
+          className="contact-form"
           style={{
             background: "var(--bg-card)",
             border: "1px solid var(--border)",
@@ -217,6 +297,7 @@ export function ContactSection() {
 
           <form onSubmit={handleSubmit}>
             <div
+              className="contact-fields"
               style={{
                 display: "grid",
                 gridTemplateColumns: "1fr 1fr",
@@ -240,6 +321,7 @@ export function ContactSection() {
                     {field} *
                   </label>
                   <input
+                    className="contact-input"
                     type={field === "email" ? "email" : "text"}
                     required
                     value={form[field]}
@@ -286,6 +368,7 @@ export function ContactSection() {
                 Subject
               </label>
               <input
+                className="contact-input"
                 type="text"
                 value={form.subject}
                 onChange={(e) =>
@@ -323,6 +406,7 @@ export function ContactSection() {
                 Message *
               </label>
               <textarea
+                className="contact-input"
                 required
                 rows={5}
                 value={form.message}
