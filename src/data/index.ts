@@ -1,7 +1,25 @@
 // ============================================================
 // PERSONAL DATA — update this to personalize your portfolio
 // ============================================================
+export interface Metric {
+  label: string;
+  value: string;
+}
 
+export interface Project {
+  id: string;
+  title: string;
+  type: string;
+  badgeColor: "primary" | "secondary";
+  featured: boolean;
+  description: string;
+  longDescription?: string;
+  stack: string[];
+  metrics: Metric[];
+  liveUrl: string;
+  githubUrl: string;
+  year: string;
+}
 export const personal = {
   name: "Komal Raza",
   firstName: "Komal",
@@ -81,7 +99,7 @@ export const skills = {
   },
 };
 
-export const projects = [
+export const projects: Project[] = [
   {
     id: "01",
     title: "Shop Management Software",
