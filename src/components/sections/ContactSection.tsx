@@ -40,12 +40,6 @@ export function ContactSection() {
       value: "github.com/komalraza",
       href: personal.social.github,
     },
-    {
-      icon: "✕",
-      label: "Twitter",
-      value: "@komalraza",
-      href: personal.social.twitter,
-    },
   ];
 
   return (
